@@ -3,7 +3,6 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
 import routes from 'configs/routes';
-// import authRouter from './modules/auth/auth.route';
 
 const app = express();
 

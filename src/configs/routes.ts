@@ -1,9 +1,9 @@
 import express from 'express';
-
-import authRouter from '../modules/auth/auth.route';
+import sortMiddleware from 'middleware/sort.middleware';
+import authRouter from 'modules/auth/auth.route';
 
 const routes = express();
 
-routes.use('/auth', authRouter);
+routes.use('/auth', sortMiddleware, authRouter);
 
 export default routes;
