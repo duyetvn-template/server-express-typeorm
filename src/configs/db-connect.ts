@@ -5,8 +5,9 @@ const AppDataSource = new DataSource({
 	host: 'localhost',
 	port: 3306,
 	username: 'root',
-	database: 'wms',
+	database: 'test',
 	entities: ['src/**/*.entity.ts'],
+	migrations: ['src/database/migrations/*.ts'],
 });
 
 export default AppDataSource;

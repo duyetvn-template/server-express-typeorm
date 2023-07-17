@@ -21,7 +21,9 @@
 		"start": "nodemon",
 		"start:pro": "node dist/main.js",
 		"build": "tsc -p src/main.ts",
-		"typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts"
+		"typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts",
+		"migration:create": "npx typeorm migration:create ./src/database/migrations/${name}",
+		"migration:run": "npx typeorm migration:run"
 	},
 	"license": "ISC",
 	"dependencies": {
