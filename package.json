@@ -20,7 +20,8 @@
 	"scripts": {
 		"start": "nodemon",
 		"start:pro": "node dist/main.js",
-		"build": "tsc -p src/main.ts"
+		"build": "tsc -p src/main.ts",
+		"typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts"
 	},
 	"license": "ISC",
 	"dependencies": {
