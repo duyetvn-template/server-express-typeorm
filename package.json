@@ -21,7 +21,9 @@
 		"start": "nodemon",
 		"start:pro": "node dist/main.js",
 		"build": "tsc -p src/main.ts",
-		"typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./src/ormconfig.ts",
+		"typeorm2": "ts-node ./node_modules/typeorm/cli -f ./src/database/orm.config.ts",
+		"typeorm": "ts-node ./node_modules/typeorm/cli -f ./migration-config.json",
+		"migration:generate": "./node_modules/.bin/typeorm migration:generate -f ./src/database/orm.config.ts -n T",
 		"migration:create": "npx typeorm migration:create ./src/database/migrations/${name}",
 		"migration:run": "npx typeorm migration:run"
 	},
