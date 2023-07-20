@@ -12,10 +12,20 @@ Nodejs 18.14.2
   - [ ] pool connection
 - [ ] setup error handler
 - [ ] setup logging
+  - [ ] winston
+  - [ ] morgan
 - [ ] jwt - auth module
 - [ ] upload file
 - [ ] prettier - eslint
 - [ ] husky
+- [ ] middleware
+  - [ ] role
+  - [ ] auth
+- [ ] common
+  - [ ] entity
+  - [ ] dto
+  - [ ] controller - service
+- [ ] CLI tool generate
 
 ## OPTION
 
