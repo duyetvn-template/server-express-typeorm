@@ -1,4 +1,4 @@
-import ENVIRONMENTS from 'constants/environment';
+import env from 'constants/environment';
 import app from './app';
 import AppDataSource from 'configs/typeorm.config';
 
@@ -10,6 +10,6 @@ AppDataSource.initialize()
 		console.error('Error during Data Source initialization', err);
 	});
 
-app.listen(ENVIRONMENTS.PORT, () => {
-	console.log(`Listening to port ${ENVIRONMENTS.PORT}`);
+app.listen(env.PORT, () => {
+	console.log(`Listening to port ${env.PORT}`);
 });
