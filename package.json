@@ -22,7 +22,7 @@
 		"start:pro": "node dist/main.js",
 		"build": "tsc -p src/main.ts",
 		"typeorm": "typeorm-ts-node-commonjs -d src/configs/db-connect.ts",
-		"migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d src/configs/db-connect.ts TTT",
+		"migration:generate": "npx typeorm-ts-node-commonjs -p -d src/configs/db-connect.ts migration:generate src/database/migrations/Create",
 		"migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/configs/db-connect.ts",
 		"migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/configs/db-connect.ts"
 	},

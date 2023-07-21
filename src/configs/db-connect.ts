@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import { DataSource } from 'typeorm';
 
 const AppDataSource = new DataSource({
@@ -6,7 +7,7 @@ const AppDataSource = new DataSource({
 	port: 3306,
 	username: 'root',
 	database: 'test',
-	entities: ['src/**/*.entity.ts'],
+	entities: ['src/modules/**/*.entity.ts'],
 	migrations: ['src/database/migrations/*.ts'],
 });
 
