@@ -1,6 +1,6 @@
 import ENVIRONMENTS from 'constants/environment';
 import app from './app';
-import AppDataSource from 'configs/db-connect';
+import AppDataSource from 'configs/orm.config';
 
 AppDataSource.initialize()
 	.then(() => {

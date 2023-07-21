@@ -8,7 +8,7 @@ const AppDataSource = new DataSource({
 	username: 'root',
 	database: 'test',
 	entities: ['src/modules/**/*.entity.ts'],
-	migrations: ['src/database/migrations/*.ts'],
+	migrations: ['database/migrations/*.ts'],
 });
 
 export default AppDataSource;

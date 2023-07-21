@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class C1689918107827 implements MigrationInterface {
-    name = 'C1689918107827'
+export class Create1689929351699 implements MigrationInterface {
+    name = 'Create1689929351699'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
-            CREATE TABLE \`users\` (
+            CREATE TABLE \`user\` (
                 \`id\` varchar(36) NOT NULL,
                 \`name\` varchar(255) NOT NULL,
                 \`password\` varchar(255) NOT NULL,
@@ -13,7 +13,7 @@ export class C1689918107827 implements MigrationInterface {
                 \`role\` int NOT NULL,
                 \`createdAt\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
                 \`updatedAt\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
-                UNIQUE INDEX \`IDX_97672ac88f789774dd47f7c8be\` (\`email\`),
+                UNIQUE INDEX \`IDX_e12875dfb3b1d92d7d7c5377e2\` (\`email\`),
                 PRIMARY KEY (\`id\`)
             ) ENGINE = InnoDB
         `);
@@ -21,10 +21,10 @@ export class C1689918107827 implements MigrationInterface {
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
-            DROP INDEX \`IDX_97672ac88f789774dd47f7c8be\` ON \`users\`
+            DROP INDEX \`IDX_e12875dfb3b1d92d7d7c5377e2\` ON \`user\`
         `);
         await queryRunner.query(`
-            DROP TABLE \`users\`
+            DROP TABLE \`user\`
         `);
     }
 

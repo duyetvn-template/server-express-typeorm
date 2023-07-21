@@ -21,10 +21,10 @@
 		"start": "nodemon",
 		"start:pro": "node dist/main.js",
 		"build": "tsc -p src/main.ts",
-		"typeorm": "typeorm-ts-node-commonjs -d src/configs/db-connect.ts",
-		"migration:generate": "npx typeorm-ts-node-commonjs -p -d src/configs/db-connect.ts migration:generate src/database/migrations/Create",
-		"migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/configs/db-connect.ts",
-		"migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/configs/db-connect.ts"
+		"typeorm": "typeorm-ts-node-commonjs -d src/configs/orm.config.ts",
+		"migration:generate": "npx typeorm-ts-node-commonjs -p -d src/configs/orm.config.ts migration:generate database/migrations/Create",
+		"migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/configs/orm.config.ts",
+		"migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/configs/orm.config.ts"
 	},
 	"license": "ISC",
 	"dependencies": {
