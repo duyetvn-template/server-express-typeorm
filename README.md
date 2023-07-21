@@ -5,8 +5,8 @@ Nodejs 18.14.2
 - [x] folder structure
 - [x] setup routes
   - [ ] swagger
-- [ ] typeorm - connect sql
-  - [ ] migration
+- [x] typeorm - connect sql
+  - [x] migration
   - [ ] seeder data
   - [ ] transaction
   - [ ] pool connection
