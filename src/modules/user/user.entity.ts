@@ -2,9 +2,9 @@ import { hash } from 'bcrypt';
 import {
 	BeforeInsert,
 	Column,
-	CreateDateColumn,
 	Entity,
 	PrimaryGeneratedColumn,
+	CreateDateColumn,
 	UpdateDateColumn,
 } from 'typeorm';
 

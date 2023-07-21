@@ -7,7 +7,7 @@ Nodejs 18.14.2
   - [ ] swagger
 - [x] typeorm - connect sql
   - [x] migration
-  - [ ] seeder data
+  - [ ] seeder data [link](https://github.com/bymi15/express-typeorm-rest-boilerplate/blob/main/commands/seed.ts)
   - [ ] transaction
   - [ ] pool connection
 - [ ] setup error handler
@@ -21,11 +21,11 @@ Nodejs 18.14.2
 - [ ] middleware
   - [ ] role
   - [ ] auth
-- [ ] common
+- [ ] base
   - [ ] entity
   - [ ] dto
   - [ ] controller - service
-- [ ] CLI tool generate
+- [ ] CLI tool generate [link](https://github.com/bymi15/express-typeorm-rest-boilerplate/blob/main/commands/lib/Generator.ts)
 
 ## OPTION
 
