@@ -25,10 +25,13 @@ Nodejs 18.14.2
   - [ ] entity
   - [ ] dto
   - [ ] controller - service
-- [ ] CLI tool generate [link](https://github.com/bymi15/express-typeorm-rest-boilerplate/blob/main/commands/lib/Generator.ts)
+- [ ] Setup db aws - production env
+  - [ ] learn basic of terraform
+  - [ ] setup github actions
+- [ ] pm2 - ecosystem
 
 ## OPTION
 
 - [ ] docker dev environment
 - [ ] build with webpack
-- [ ] tool gen code
+- [ ] CLI tool gen code [link](https://github.com/bymi15/express-typeorm-rest-boilerplate/blob/main/commands/lib/Generator.ts)
