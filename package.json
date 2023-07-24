@@ -15,11 +15,11 @@
     "watch": [
       "src"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register src/main.ts",
     "ext": "ts, js"
   },
   "scripts": {
-    "start": "concurrently \"nodemon src/main.ts\" \"nodemon --watch src/**/*.controller.ts tsoa spec-and-routes\"",
+    "start": "concurrently \"nodemon\" \"nodemon --watch src/**/*.controller.ts --exec tsoa spec-and-routes\"",
     "start:pro": "node dist/main.js",
     "build": "tsc -p src/main.ts",
     "gen:swagger": "tsoa spec-and-routes",
