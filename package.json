@@ -9,16 +9,17 @@
       "**/*.test.ts",
       "**/*.spec.ts",
       ".git",
-      "node_modules"
+      "node_modules",
+      "src/routes.ts"
     ],
     "watch": [
       "src"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register src/main.ts",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register",
     "ext": "ts, js"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "concurrently \"nodemon src/main.ts\" \"nodemon --watch src/**/*.controller.ts tsoa spec-and-routes\"",
     "start:pro": "node dist/main.js",
     "build": "tsc -p src/main.ts",
     "gen:swagger": "tsoa spec-and-routes",
@@ -51,6 +52,7 @@
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.4.2",
     "@types/swagger-ui-express": "^4.1.3",
+    "concurrently": "^8.2.0",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",

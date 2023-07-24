@@ -3,8 +3,10 @@ Nodejs 18.14.2
 ## TODO
 
 ---
-- [ ] prettier - eslint
+
 - [ ] module user
+- [x] auto gen routes - start command
+- [ ] prettier - eslint
 - [ ] jwt - auth module
 - [ ] middleware
   - [ ] role
@@ -13,6 +15,7 @@ Nodejs 18.14.2
   - [ ] entity
   - [ ] dto
   - [ ] controller - service
+
 ---
 
 - [x] folder structure
@@ -29,7 +32,6 @@ Nodejs 18.14.2
   - [ ] morgan
 - [ ] upload file
 - [ ] husky
-
 
 ## OPTION
 
