@@ -22,10 +22,11 @@
     "start:pro": "node dist/main.js",
     "build": "tsc -p src/main.ts",
     "gen:swagger": "tsoa spec-and-routes",
-    "typeorm": "typeorm-ts-node-commonjs -d src/configs/typeorm.config.ts",
-    "migration:generate": "npx typeorm-ts-node-commonjs -p -d src/configs/typeorm.config.ts migration:generate database/migrations/Create",
-    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/configs/typeorm.config.ts",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/configs/typeorm.config.ts"
+    "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js -d src/configs/typeorm.config.ts",
+    "migration:gen": "npm run typeorm -- migration:generate -p database/migrations/User",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert",
+    "schema:drop": "npm run typeorm schema:drop"
   },
   "license": "ISC",
   "dependencies": {

@@ -1,50 +1,31 @@
 import { hash } from 'bcrypt'
-import {
-  BeforeInsert,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm'
+import { BaseEntity } from 'common/base.entity'
+import { UserRole } from 'common/enums.enum'
+import { BeforeInsert, Column, Entity } from 'typeorm'
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string
-
+export class User extends BaseEntity {
   @Column()
-  name: string
+  username: string
 
   @Column()
   password: string
 
-  @Column({ unique: true })
-  email: string
+  @Column({ nullable: true })
+  avatar?: string
 
-  @Column()
-  role: number
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole
 
+  // ==================================RELATIONSHIP==================================
+
+  // ==================================EVENTS==================================
   @BeforeInsert()
   async hashPassword() {
     this.password = await hash(this.password, 10)
   }
-
-  @CreateDateColumn()
-  createdAt: Date
-
-  @UpdateDateColumn()
-  updatedAt: Date
-
-  // toResponse(): Partial<User> {
-  // 	const responseUser = new User();
-  // 	responseUser.id = this.id;
-  // 	responseUser.name = this.name;
-  // 	responseUser.email = this.email;
-  // 	responseUser.role = this.role;
-  // 	responseUser.createdAt = this.createdAt;
-  // 	responseUser.updatedAt = this.updatedAt;
-
-  // 	return responseUser;
-  // }
 }
