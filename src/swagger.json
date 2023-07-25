@@ -6,14 +6,51 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"UserRole": {
+				"enum": [
+					1,
+					2,
+					3,
+					4
+				],
+				"type": "number"
+			},
 			"User": {
 				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"deletedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
 					"username": {
 						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"avatar": {
+						"type": "string"
+					},
+					"role": {
+						"$ref": "#/components/schemas/UserRole"
 					}
 				},
 				"required": [
-					"username"
+					"id",
+					"createdAt",
+					"username",
+					"password",
+					"role"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -27,6 +64,22 @@
 						"$ref": "#/components/schemas/User"
 					}
 				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ValidateErrorJSON": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Unauthorized"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"message"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -45,32 +98,6 @@
 				],
 				"type": "object",
 				"additionalProperties": false
-			},
-			"Pick_User.email-or-name-or-phoneNumbers_": {
-				"properties": {
-					"email": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"phoneNumbers": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					}
-				},
-				"required": [
-					"email",
-					"name",
-					"phoneNumbers"
-				],
-				"type": "object",
-				"description": "From T, pick a set of properties whose keys are in the union K"
-			},
-			"UserCreationParams": {
-				"$ref": "#/components/schemas/Pick_User.email-or-name-or-phoneNumbers_"
 			}
 		},
 		"securitySchemes": {}
@@ -100,8 +127,21 @@
 								}
 							}
 						}
+					},
+					"401": {
+						"description": "Unauthorized!",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidateErrorJSON"
+								}
+							}
+						}
 					}
 				},
+				"tags": [
+					"Auth"
+				],
 				"security": [],
 				"parameters": [],
 				"requestBody": {
@@ -131,6 +171,9 @@
 						}
 					}
 				},
+				"tags": [
+					"Auth"
+				],
 				"security": [],
 				"parameters": [],
 				"requestBody": {
@@ -145,32 +188,19 @@
 				}
 			}
 		},
-		"/users/{userId}": {
+		"/users": {
 			"get": {
-				"operationId": "GetUser",
+				"operationId": "GetAll",
 				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/User"
-								}
-							}
-						}
+					"204": {
+						"description": "No content"
 					}
 				},
+				"tags": [
+					"Users"
+				],
 				"security": [],
 				"parameters": [
-					{
-						"in": "path",
-						"name": "userId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
 					{
 						"in": "query",
 						"name": "name",
@@ -180,50 +210,6 @@
 						}
 					}
 				]
-			}
-		},
-		"/users": {
-			"post": {
-				"operationId": "CreateUser",
-				"responses": {
-					"201": {
-						"description": "Created"
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/UserCreationParams"
-							}
-						}
-					}
-				}
-			}
-		},
-		"/users/create-user": {
-			"post": {
-				"operationId": "CreateUser2",
-				"responses": {
-					"201": {
-						"description": "Created"
-					}
-				},
-				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/UserCreationParams"
-							}
-						}
-					}
-				}
 			}
 		}
 	},

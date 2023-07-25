@@ -1,9 +1,28 @@
-import { Body, Controller, Get, Path, Post, Query, Route, SuccessResponse, Request, Response } from 'tsoa'
+import {
+  Body,
+  Controller,
+  Get,
+  Path,
+  Post,
+  Query,
+  Route,
+  SuccessResponse,
+  Request,
+  Response,
+  Tags,
+  Example,
+  Middlewares,
+} from 'tsoa'
 import { AuthService } from './auth.service'
 import { LoginInput } from './dto/auth.input'
 import { LoginDTO } from './dto/auth.dto'
 
+interface ValidateErrorJSON {
+  message: 'Unauthorized'
+}
+
 @Route('auth')
+@Tags('Auth')
 export class AuthController extends Controller {
   private readonly service: AuthService
 
@@ -13,12 +32,20 @@ export class AuthController extends Controller {
   }
 
   @Post('login')
+  @Response<ValidateErrorJSON>(401, 'Unauthorized!')
   public async login(@Body() body: LoginInput): Promise<LoginDTO> {
     return this.service.login(body)
   }
 
   @Post('refresh-token')
-  public async refreshToken(@Body() body: LoginInput): Promise<LoginDTO> {
+  // @Example<LoginDTO>({
+  //   accessToken: 'many',
+  //   user: {
+  //     username: 'hello world',
+  //   },
+  // })
+  // @Middlewares()
+  public async refreshToken(@Body() body: LoginInput) {
     return this.service.login(body)
   }
 

@@ -8,11 +8,12 @@ import {
   ArrayNotEmpty,
 } from 'class-validator'
 import { UserStatus } from '../../../common/enums.enum'
+import { User } from 'modules/user/user.entity'
 
-export class User {
-  @IsString()
-  username: string
-}
+// export class User {
+//   @IsString()
+//   username: string
+// }
 
 export class LoginDTO {
   accessToken?: string

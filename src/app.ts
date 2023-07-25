@@ -22,6 +22,7 @@ app.use('/docs', swaggerUi.serve, async (_req: Request, res: Response) => {
   return res.send(swaggerUi.generateHTML(await import('../src/swagger.json')))
 })
 
+// TODO:-D check here
 app.use(function errorHandler(
   err: unknown,
   req: Request,
@@ -37,7 +38,7 @@ app.use(function errorHandler(
   }
   if (err instanceof Error) {
     if (ENVS.NODE_ENV === 'development') {
-      console.error(err.message);
+      console.error(err.message)
     }
 
     return res.status(500).json({
