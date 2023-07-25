@@ -6,40 +6,14 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"UserStatus": {
-				"enum": [
-					"Happy",
-					"Sad"
-				],
-				"type": "string"
-			},
 			"User": {
 				"properties": {
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"email": {
+					"username": {
 						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"status": {
-						"$ref": "#/components/schemas/UserStatus"
-					},
-					"phoneNumbers": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
 					}
 				},
 				"required": [
-					"id",
-					"email",
-					"name",
-					"phoneNumbers"
+					"username"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -53,10 +27,6 @@
 						"$ref": "#/components/schemas/User"
 					}
 				},
-				"required": [
-					"accessToken",
-					"user"
-				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -120,6 +90,35 @@
 		"/auth/login": {
 			"post": {
 				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginDTO"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/refresh-token": {
+			"post": {
+				"operationId": "RefreshToken",
 				"responses": {
 					"200": {
 						"description": "Ok",

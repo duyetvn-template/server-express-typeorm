@@ -17,6 +17,11 @@ export class AuthController extends Controller {
     return this.service.login(body)
   }
 
+  @Post('refresh-token')
+  public async refreshToken(@Body() body: LoginInput): Promise<LoginDTO> {
+    return this.service.login(body)
+  }
+
   // @SuccessResponse('201', 'Created') // Custom success response
   // @Post()
   // public async createUser(@Body() requestBody: UserCreationParams): Promise<void> {

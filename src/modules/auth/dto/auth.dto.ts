@@ -10,26 +10,11 @@ import {
 import { UserStatus } from '../../../common/enums.enum'
 
 export class User {
-  @IsNumber()
-  id: number
-
-  @IsEmail()
-  email: string
-
   @IsString()
-  name: string
-
-  @IsOptional()
-  @IsEnum(UserStatus)
-  status?: UserStatus
-
-  @IsArray()
-  @ArrayNotEmpty()
-  phoneNumbers: string[]
+  username: string
 }
 
-
 export class LoginDTO {
-  accessToken: string;
-  user: User;
+  accessToken?: string
+  user?: User
 }

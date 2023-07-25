@@ -11,19 +11,10 @@ import type { RequestHandler, Router } from 'express';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
-    "UserStatus": {
-        "dataType": "refEnum",
-        "enums": ["Happy","Sad"],
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "User": {
         "dataType": "refObject",
         "properties": {
-            "id": {"dataType":"double","required":true},
-            "email": {"dataType":"string","required":true},
-            "name": {"dataType":"string","required":true},
-            "status": {"ref":"UserStatus"},
-            "phoneNumbers": {"dataType":"array","array":{"dataType":"string"},"required":true},
+            "username": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -31,8 +22,8 @@ const models: TsoaRoute.Models = {
     "LoginDTO": {
         "dataType": "refObject",
         "properties": {
-            "accessToken": {"dataType":"string","required":true},
-            "user": {"ref":"User","required":true},
+            "accessToken": {"dataType":"string"},
+            "user": {"ref":"User"},
         },
         "additionalProperties": false,
     },
@@ -85,6 +76,31 @@ export function RegisterRoutes(app: Router) {
 
 
               const promise = controller.login.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/auth/refresh-token',
+            ...(fetchMiddlewares<RequestHandler>(AuthController)),
+            ...(fetchMiddlewares<RequestHandler>(AuthController.prototype.refreshToken)),
+
+            function AuthController_refreshToken(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"LoginInput"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new AuthController();
+
+
+              const promise = controller.refreshToken.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

@@ -5,6 +5,7 @@ import { LoginInput } from './dto/auth.input';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import ENVS from 'constants/environment';
+import { LoginDTO } from './dto/auth.dto';
 
 export class AuthService  {
   protected repo: Repository<User>;
@@ -39,7 +40,7 @@ export class AuthService  {
   //   return ResponseUtil.sendResponse(res, "Successfully registered", user, null);
   // }
 
-  async login(body: LoginInput): Promise<any> {
+  async login(body: LoginInput): Promise<LoginDTO> {
     const { username, password } = body;
     const dto = new LoginInput();
     dto.username = username;

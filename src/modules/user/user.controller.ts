@@ -1,34 +1,18 @@
 import { Body, Controller, Get, Path, Post, Query, Route, SuccessResponse } from 'tsoa'
-import { UserCreationParams, UsersService } from './user.service'
 import { User } from './dto/user.dto'
+import { UserService } from './user.service'
 
 @Route('users')
 export class UsersController extends Controller {
-  private readonly usersService: UsersService
+  private readonly service: UserService
 
   constructor() {
     super()
-    this.usersService = new UsersService()
+    this.service = new UserService()
   }
 
-  @Get('{userId}')
-  public async getUser(@Path() userId: number, @Query() name?: string): Promise<User> {
-    return this.usersService.get(userId, name)
-  }
-
-  @SuccessResponse('201', 'Created') // Custom success response
-  @Post()
-  public async createUser(@Body() requestBody: UserCreationParams): Promise<void> {
-    this.setStatus(201) // set return status 201
-    this.usersService.create(requestBody)
-    return
-  }
-
-  @SuccessResponse('201', 'Created') // Custom success response
-  @Post('create-user')
-  public async createUser2(@Body() requestBody: UserCreationParams): Promise<void> {
-    this.setStatus(201) // set return status 201
-    this.usersService.create(requestBody)
-    return
+  @Get()
+  public async getAll(@Path() userId: number, @Query() name?: string) {
+    return this.service.getAll()
   }
 }
