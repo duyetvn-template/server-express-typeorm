@@ -1,3 +1,4 @@
+import ENVS from 'constants/environment'
 import cors from 'cors'
 import express, { NextFunction, Request, Response } from 'express'
 import helmet from 'helmet'
@@ -35,6 +36,10 @@ app.use(function errorHandler(
     })
   }
   if (err instanceof Error) {
+    if (ENVS.NODE_ENV === 'development') {
+      console.error(err.message);
+    }
+
     return res.status(500).json({
       message: 'Internal Server Error',
     })
@@ -43,7 +48,7 @@ app.use(function errorHandler(
   next()
 })
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   return res.status(404).json({
     message: 'Not found!',
   })

@@ -6,6 +6,13 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"UserStatus": {
+				"enum": [
+					"Happy",
+					"Sad"
+				],
+				"type": "string"
+			},
 			"User": {
 				"properties": {
 					"id": {
@@ -19,11 +26,7 @@
 						"type": "string"
 					},
 					"status": {
-						"type": "string",
-						"enum": [
-							"Happy",
-							"Sad"
-						]
+						"$ref": "#/components/schemas/UserStatus"
 					},
 					"phoneNumbers": {
 						"items": {
@@ -37,6 +40,38 @@
 					"email",
 					"name",
 					"phoneNumbers"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginDTO": {
+				"properties": {
+					"accessToken": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
+					}
+				},
+				"required": [
+					"accessToken",
+					"user"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginInput": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"password"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -82,6 +117,35 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginDTO"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginInput"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/users/{userId}": {
 			"get": {
 				"operationId": "GetUser",
@@ -122,6 +186,28 @@
 		"/users": {
 			"post": {
 				"operationId": "CreateUser",
+				"responses": {
+					"201": {
+						"description": "Created"
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCreationParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/create-user": {
+			"post": {
+				"operationId": "CreateUser2",
 				"responses": {
 					"201": {
 						"description": "Created"

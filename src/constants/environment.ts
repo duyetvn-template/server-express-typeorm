@@ -1,8 +1,9 @@
-import 'dotenv/config';
+import 'dotenv/config'
 
-const env = {
-	PORT: process.env.PORT || 8002,
-	ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || 'secret',
-};
+const ENV = {
+  PORT: process.env.PORT || 8002,
+  NODE_ENV: process.env.NODE_ENV || 'development',
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || 'secret',
+}
 
-export default env;
+export default ENV

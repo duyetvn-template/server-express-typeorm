@@ -4,17 +4,23 @@ Nodejs 18.14.2
 
 ---
 
+- [ ] throw error common function
 - [ ] module user
+  - [ ] login
+  - [ ] manage
+  - [x] seeder
 - [x] auto gen routes - start command
 - [x] prettier - eslint
+- [ ] setup error handler
 - [ ] jwt - auth module
 - [ ] middleware
   - [ ] role
   - [ ] auth
-- [ ] - [ ] base
-  - [ ] entity
+- [ ] class-validator
+- [ ] base
+  - [x] entity
   - [ ] dto
-  - [ ] controller - service
+  - [ ] response
 
 ---
 
@@ -26,7 +32,6 @@ Nodejs 18.14.2
   - [ ] seeder data [link](https://github.com/bymi15/express-typeorm-rest-boilerplate/blob/main/commands/seed.ts)
   - [ ] transaction
   - [ ] pool connection
-- [ ] setup error handler
 - [ ] setup logging
   - [ ] winston
   - [ ] morgan

@@ -4,3 +4,8 @@ export enum UserRole {
   ADMIN = 3,
   ADMIN_VIP = 4,
 }
+
+export enum UserStatus {
+  Happy = 'Happy',
+  Sad = 'Sad',
+}

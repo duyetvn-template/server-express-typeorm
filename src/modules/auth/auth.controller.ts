@@ -1,39 +1,35 @@
-import { RequestHandler } from 'express';
-import bcrypt from 'bcrypt';
+import { Body, Controller, Get, Path, Post, Query, Route, SuccessResponse, Request, Response } from 'tsoa'
+import { AuthService } from './auth.service'
+import { LoginInput } from './dto/auth.input'
+import { LoginDTO } from './dto/auth.dto'
 
-const register: RequestHandler = async (req, res) => {
-	const { user, password } = req.body;
-	if (!user || !password)
-		return res
-			.status(400)
-			.json({ message: 'Username and password are required.' });
+@Route('auth')
+export class AuthController extends Controller {
+  private readonly service: AuthService
 
-	// check for duplicate usernames in the db
-	// const duplicate = await User.findOne({ username: user }).exec();
-	// if (duplicate) return res.sendStatus(409); //Conflict
+  constructor() {
+    super()
+    this.service = new AuthService()
+  }
 
-	try {
-		//encrypt the password
-		const hashedPwd = await bcrypt.hash(password, 10);
+  @Post('login')
+  public async login(@Body() body: LoginInput): Promise<LoginDTO> {
+    return this.service.login(body)
+  }
 
-		//create and store the new user
-		// const result = await User.create({
-		// 	username: user,
-		// 	password: hashedPwd,
-		// });
+  // @SuccessResponse('201', 'Created') // Custom success response
+  // @Post()
+  // public async createUser(@Body() requestBody: UserCreationParams): Promise<void> {
+  //   this.setStatus(201) // set return status 201
+  //   this.service.create(requestBody)
+  //   return
+  // }
 
-		res.status(201).json({ success: `New user ${user} created!` });
-	} catch (err: any) {
-		res.status(500).json({ message: err.message });
-	}
-};
-
-const login: RequestHandler = (req, res) => {
-	res.json({
-		message: 'login',
-	});
-};
-
-const authController = { register, login };
-
-export default authController;
+  // @SuccessResponse('201', 'Created') // Custom success response
+  // @Post('create-user')
+  // public async createUser2(@Body() requestBody: UserCreationParams): Promise<void> {
+  //   this.setStatus(201) // set return status 201
+  //   this.service.create(requestBody)
+  //   return
+  // }
+}

@@ -7,7 +7,7 @@ import {
   IsArray,
   ArrayNotEmpty,
 } from 'class-validator'
-import { UserStatus } from 'common/enums.enum'
+import { UserStatus } from '../../../common/enums.enum'
 
 export class User {
   @IsNumber()
@@ -21,9 +21,15 @@ export class User {
 
   @IsOptional()
   @IsEnum(UserStatus)
-  status?: 'Happy' | 'Sad'
+  status?: UserStatus
 
   @IsArray()
   @ArrayNotEmpty()
   phoneNumbers: string[]
+}
+
+
+export class LoginDTO {
+  accessToken: string;
+  user: User;
 }
