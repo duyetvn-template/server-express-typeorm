@@ -1,9 +1,10 @@
 import { hash } from 'bcrypt'
 import { BaseEntity } from 'common/base.entity'
 import { UserRole } from 'common/enums.enum'
+import { TABLE_NAME } from 'constants/table-name'
 import { BeforeInsert, Column, Entity } from 'typeorm'
 
-@Entity()
+@Entity(TABLE_NAME.USER)
 export class User extends BaseEntity {
   @Column()
   username: string
