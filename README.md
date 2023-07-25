@@ -6,7 +6,7 @@ Nodejs 18.14.2
 
 - [ ] module user
 - [x] auto gen routes - start command
-- [ ] prettier - eslint
+- [x] prettier - eslint
 - [ ] jwt - auth module
 - [ ] middleware
   - [ ] role
