@@ -47,3 +47,8 @@ Nodejs 18.14.2
 - [ ] Setup db aws - production env
   - [ ] learn basic of terraform
   - [ ] setup github actions
+
+
+![](2023-07-27-05-45-57.png)
+![](2023-07-27-05-47-13.png)
+![](2023-07-27-05-47-40.png)

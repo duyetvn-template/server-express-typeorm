@@ -2,17 +2,11 @@ import { hash } from 'bcrypt'
 import { BaseEntity } from 'common/base.entity'
 import { UserRole } from 'common/common.enum'
 import { TABLE_NAME } from 'constants/table-name'
-import { Vip } from 'modules/vip/vip.entity'
-import { BeforeInsert, Column, Entity, JoinColumn, OneToOne } from 'typeorm'
+import { User } from 'modules/user/user.entity'
+import { BeforeInsert, Column, Entity, OneToOne } from 'typeorm'
 
-@Entity(TABLE_NAME.USER)
-export class User extends BaseEntity {
-  @Column({ nullable: true })
-  vipId?: string
-
-  @Column({ type: 'timestamp', nullable: true })
-  vipRegisterTime?: Date
-
+@Entity(TABLE_NAME.VIP)
+export class Vip extends BaseEntity {
   @Column()
   username: string
 
@@ -30,9 +24,8 @@ export class User extends BaseEntity {
   role: UserRole
 
   // ==================================RELATIONSHIP==================================
-  @OneToOne(() => Vip, (vip) => vip.user, { nullable: true }) // specify inverse side as a second parameter
-  @JoinColumn()
-  vip?: Vip
+  @OneToOne(() => User, (user) => user.vip) // specify inverse side as a second parameter
+  user: User
 
   // ==================================EVENTS==================================
   @BeforeInsert()

@@ -1,9 +1,9 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 import AppDataSource from "../../src/configs/typeorm.config";
 import { User } from "../../src/modules/user/user.entity";
-import { UserRole } from "../../src/common/enums.enum";
+import { UserRole } from "../../src/common/common.enum";
 
-export class SeedUser1690270759606 implements MigrationInterface {
+export class SeedUser1690411306068 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const repo = AppDataSource.getRepository(User);
@@ -26,6 +26,6 @@ export class SeedUser1690270759606 implements MigrationInterface {
         if (user) {
         await repo.remove(user);
         }
-
     }
+
 }

@@ -1,3 +1,13 @@
 export enum TABLE_NAME {
-  USER = "user",
+  VIP = 'vip',
+  USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
+  // USER = 'user',
 }
