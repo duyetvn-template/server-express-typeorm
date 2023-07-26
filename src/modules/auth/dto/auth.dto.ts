@@ -7,7 +7,7 @@ import {
   IsArray,
   ArrayNotEmpty,
 } from 'class-validator'
-import { UserStatus } from '../../../common/enums.enum'
+import { UserStatus } from '../../../common/common.enum'
 import { User } from 'modules/user/user.entity'
 
 // export class User {

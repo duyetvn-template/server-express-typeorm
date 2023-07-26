@@ -15,7 +15,7 @@ Nodejs 18.14.2
 - [ ] jwt - auth module
 - [ ] middleware
   - [ ] role
-  - [ ] auth
+  - [x] auth
 - [ ] class-validator
 - [ ] base
   - [x] entity

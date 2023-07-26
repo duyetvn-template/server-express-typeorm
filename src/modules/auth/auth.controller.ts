@@ -16,6 +16,8 @@ import {
 import { AuthService } from './auth.service'
 import { LoginInput } from './dto/auth.input'
 import { LoginDTO } from './dto/auth.dto'
+import authenticate from 'middlewares/authenticate.middleware'
+import { Request as RequestEx } from 'express'
 
 interface ValidateErrorJSON {
   message: 'Unauthorized'
@@ -44,9 +46,11 @@ export class AuthController extends Controller {
   //     username: 'hello world',
   //   },
   // })
-  // @Middlewares()
-  public async refreshToken(@Body() body: LoginInput) {
-    return this.service.login(body)
+  @Middlewares(authenticate)
+  public async refreshToken(@Request() req: RequestEx) {
+    // TODO:-D define type
+    // @ts-ignore
+    return req.user
   }
 
   // @SuccessResponse('201', 'Created') // Custom success response

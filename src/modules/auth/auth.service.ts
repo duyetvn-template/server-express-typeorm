@@ -58,7 +58,7 @@ export class AuthService  {
       return {}
       // return ResponseUtil.sendErrror(res, "Invalid credentials", 401, null);
     }
-    let accessToken = sign({ userId: user.id }, ENVS.ACCESS_TOKEN_SECRET, {
+    let accessToken = sign({ id: user.id }, ENVS.ACCESS_TOKEN_SECRET, {
       expiresIn: "3d",
     });
 

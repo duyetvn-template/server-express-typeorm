@@ -164,9 +164,7 @@
 						"description": "Ok",
 						"content": {
 							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/LoginDTO"
-								}
+								"schema": {}
 							}
 						}
 					}
@@ -175,17 +173,7 @@
 					"Auth"
 				],
 				"security": [],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/LoginInput"
-							}
-						}
-					}
-				}
+				"parameters": []
 			}
 		},
 		"/users": {

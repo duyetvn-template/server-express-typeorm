@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt'
 import { BaseEntity } from 'common/base.entity'
-import { UserRole } from 'common/enums.enum'
+import { UserRole } from 'common/common.enum'
 import { TABLE_NAME } from 'constants/table-name'
 import { BeforeInsert, Column, Entity } from 'typeorm'
 
