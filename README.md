@@ -4,10 +4,12 @@ Nodejs 18.14.2
 
 ---
 
+- [ ] manage user
+  - [ ] Search
+  - [ ] Pagination
 - [ ] throw error common function
 - [ ] module user
   - [ ] login
-  - [ ] manage
   - [x] seeder
 - [x] auto gen routes - start command
 - [x] prettier - eslint
