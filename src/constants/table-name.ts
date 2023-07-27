@@ -1,6 +1,9 @@
-export enum TABLE_NAME {
-  VIP = 'vip',
-  USER = 'user',
+export const TABLE_NAME = {
+  VIP: 'vip',
+  USER: 'user',
+  VIP_BUY_HISTORY: 'vip_buy_history',
+  FEEDBACK: 'feedback',
+  ISSUE: 'issue',
   // USER = 'user',
   // USER = 'user',
   // USER = 'user',

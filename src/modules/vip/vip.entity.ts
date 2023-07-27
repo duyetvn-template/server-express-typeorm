@@ -1,35 +1,26 @@
-import { hash } from 'bcrypt'
 import { BaseEntity } from 'common/base.entity'
-import { UserRole } from 'common/common.enum'
 import { TABLE_NAME } from 'constants/table-name'
 import { User } from 'modules/user/user.entity'
-import { BeforeInsert, Column, Entity, OneToOne } from 'typeorm'
+import { VipBuyHistory } from 'modules/vip-buy-history/vip-buy-history.entity'
+import { Column, Entity, OneToMany } from 'typeorm'
 
 @Entity(TABLE_NAME.VIP)
 export class Vip extends BaseEntity {
-  @Column()
-  username: string
+  @Column({ type: 'timestamp' })
+  time: Date
 
   @Column()
-  password: string
+  price: number
 
   @Column({ nullable: true })
-  avatar?: string
-
-  @Column({
-    type: 'enum',
-    enum: UserRole,
-    default: UserRole.USER,
-  })
-  role: UserRole
+  description?: string
 
   // ==================================RELATIONSHIP==================================
-  @OneToOne(() => User, (user) => user.vip) // specify inverse side as a second parameter
-  user: User
+  @OneToMany(() => User, (user) => user.vip)
+  users: User[]
+
+  @OneToMany(() => VipBuyHistory, (vipBuyHistory) => vipBuyHistory.vip)
+  vipBuyHistories: VipBuyHistory[]
 
   // ==================================EVENTS==================================
-  @BeforeInsert()
-  async hashPassword() {
-    this.password = await hash(this.password, 10)
-  }
 }
