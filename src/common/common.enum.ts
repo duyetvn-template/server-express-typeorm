@@ -34,3 +34,8 @@ export enum Severity {
   Medium = 3,
   Critical = 4,
 }
+
+export enum TransactionType {
+  Buy = 1,
+  Sell = 2,
+}

@@ -3,7 +3,7 @@ import { VipBuyHistoryStatus } from 'common/common.enum'
 import { TABLE_NAME } from 'constants/table-name'
 import { User } from 'modules/user/user.entity'
 import { Vip } from 'modules/vip/vip.entity'
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm'
+import { Column, Entity, ManyToOne } from 'typeorm'
 
 @Entity(TABLE_NAME.VIP_BUY_HISTORY)
 export class VipBuyHistory extends BaseEntity {
@@ -13,15 +13,15 @@ export class VipBuyHistory extends BaseEntity {
   @Column()
   userId: number
 
-  @Column({ nullable: true })
-  note?: string
-
   @Column({
     type: 'enum',
     enum: VipBuyHistoryStatus,
     default: VipBuyHistoryStatus.Processing,
   })
   status: VipBuyHistoryStatus
+
+  @Column({ nullable: true })
+  note?: string
 
   // ==================================RELATIONSHIP==================================
   @ManyToOne(() => Vip, (vip) => vip.vipBuyHistories)

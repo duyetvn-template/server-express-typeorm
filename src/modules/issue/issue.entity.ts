@@ -6,13 +6,13 @@ import { Column, Entity } from 'typeorm'
 @Entity(TABLE_NAME.ISSUE)
 export class Issue extends BaseEntity {
   @Column()
+  userId: number
+
+  @Column()
   title: string
 
   @Column({ nullable: true })
   description?: string
-
-  @Column({ nullable: true })
-  reply?: string
 
   @Column({ nullable: true })
   group?: string
@@ -38,7 +38,6 @@ export class Issue extends BaseEntity {
   note?: string
 
   // ==================================RELATIONSHIP==================================
-  // TODO:-D relation createdByUser
 
   // ==================================EVENTS==================================
 }

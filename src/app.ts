@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import ENVS from 'constants/environment'
 import cors from 'cors'
 import express, { NextFunction, Request, Response } from 'express'
